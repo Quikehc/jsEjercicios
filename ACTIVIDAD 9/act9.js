@@ -2,10 +2,11 @@ function Persona(nombre, edad, genero) {
     this.nombre = nombre;
     this.edad = edad;
     this.genero = genero;
+    console.log("hola");
 }
 
-Persona.prototype.ObtDetalles() = function () {
-    console.log(nombre, edad, genero)
+Persona.prototype.ObtDetalles = function () {
+    console.log(this.nombre, this.edad, this.genero)
 }
 
 function Estudiante(nombre, edad, genero, curso, grupo) {
@@ -14,18 +15,31 @@ function Estudiante(nombre, edad, genero, curso, grupo) {
     this.grupo = grupo;
 }
 
-Estudiante.prototype.registrar() = function () {
+Estudiante.prototype = Object.create(Persona.prototype)
+
+Estudiante.prototype.registrar = function () {
     console.log(this.nombre, this.edad, this.genero, this.curso, this.grupo);
 }
 
-function Profesor(nombre, edad, genero, asignatura, nivel){
+function Profesor(nombre, edad, genero, asignatura, nivel) {
     Persona.call(this, nombre, edad, genero)
     this.asignatura = asignatura;
     this.nivel = nivel;
 }
 
-Profesor.prototype.asignar() = function(){
+Profesor.prototype = Object.create(Persona.prototype)
+
+Profesor.prototype.asignar = function () {
     console.log(this.nombre, this.edad, this.genero, this.asignatura, this.nivel);
 }
 
+function prueba() {
+    var persona1 = new Persona("Pepe", 59, "Masculino");
+    persona1.ObtDetalles();
 
+    var estudiante1 = new Estudiante("Lio", 16, "Pete", "4°", "15°");
+    estudiante1.registrar();
+
+    var profesor1 = new Profesor("Jorge", 85, "Masculino", "Matemática", "Secundario");
+    profesor1.asignar();
+}
