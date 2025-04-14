@@ -2,7 +2,7 @@ function Persona(nombre, edad, genero) {
     this.nombre = nombre;
     this.edad = edad;
     this.genero = genero;
-    console.log("hola");
+
 }
 
 Persona.prototype.ObtDetalles = function () {
